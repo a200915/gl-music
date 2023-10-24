@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
 
+
+// 判断当前环境
 export function isDevFn(mode: string): boolean {
   return mode === 'development';
 }
@@ -11,13 +13,14 @@ export function isProdFn(mode: string): boolean {
 }
 
 /**
- * Whether to generate package preview
+ * 是否生成包预览
+ * "report": "cross-env REPORT=true npm run build"
  */
 export function isReportMode(): boolean {
   return process.env.REPORT === 'true';
 }
 
-// Read all environment variable configuration files to process.env
+// 读取 process.env 所有环境变量配置
 export function wrapperEnv(envConf: Recordable): ViteEnv {
   const ret: any = {};
 
